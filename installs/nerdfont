@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+program="nerd-font"
+
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  brew install --cask "font-fira-code-${program}"
+  brew install --cask "font-jetbrains-mono-${program}"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    echo "Unsupported OS for $program."
+  else
+    echo "Unsupported OS for $program."
+  fi
+else
+  echo "Unsupported OS for $program."
+fi
