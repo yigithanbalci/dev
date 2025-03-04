@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-program="bat-extras"
+program="make"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -7,7 +7,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
-    echo "Unsupported OS for $program."
+    # sudo apt-get -y install make
+    sudo apt install $program
   else
     echo "Unsupported OS for $program."
   fi

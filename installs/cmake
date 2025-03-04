@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-program="bat"
+program="cmake"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install $program
-  brew install "${program}-extras"
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
-    sudo apt install $program
-    sudo apt install "${program}-extras"
+    # sudo apt-get -y install make
+    sudo apt update
+    sudo apt install $program -y
   else
     echo "Unsupported OS for $program."
   fi
