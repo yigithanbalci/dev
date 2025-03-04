@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Set the environment variable
-export DEV_ENV="$HOME/devenv"
+# export DEV_ENV="$HOME/devenv"
+export DEV_ENV=$(dirname "$(realpath "$0")")
 
 # Print the environment variable to verify
 echo "DEV_ENV is set to: $DEV_ENV"

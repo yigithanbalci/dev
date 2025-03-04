@@ -18,10 +18,13 @@ while [[ $# -gt 0 ]]; do
   if [[ "$1" == "--dry" ]]; then
     dry_run="1"
   else
-    grep="$1"
+    grep+=" $1" # Append instead of overwrite
   fi
   shift
 done
+
+# Trim leading space
+grep="${grep#" "}"
 
 log() {
   if [[ $dry_run == "1" ]]; then
@@ -43,15 +46,33 @@ else
 fi
 
 # TODO: add/modify filtering for preventing unnecessary installations especially for work
+# If multiple filters exist, transform them into a grep-friendly OR pattern
+if [[ -n "$grep" ]]; then
+  grep_pattern=$(echo "$grep" | sed 's/ /|/g') # Convert space-separated words to OR regex
+fi
+
 for s in $runs_dir; do
-  if echo "$s" | grep -vq "$grep"; then
-    log "grep \"$grep\" filtered out $s"
+  # Skip scripts if they do not match the grep pattern
+  if [[ -n "$grep_pattern" ]] && ! echo "$s" | grep -Eq "$grep_pattern"; then
+    log "grep \"$grep_pattern\" filtered out $s"
     continue
   fi
 
   log "running script: $s"
-
   if [[ $dry_run == "0" ]]; then
     $s
   fi
 done
+
+# for s in $runs_dir; do
+#   if echo "$s" | grep -vq "$grep"; then
+#     log "grep \"$grep\" filtered out $s"
+#     continue
+#   fi
+#
+#   log "running script: $s"
+#
+#   if [[ $dry_run == "0" ]]; then
+#     $s
+#   fi
+# done
