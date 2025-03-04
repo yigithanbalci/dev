@@ -14,7 +14,7 @@ export DOTFILES_DIR="$DEV_ENV/dotfiles"
 echo "DOTFILES_DIR is set to: $DOTFILES_DIR"
 
 # Run the install script
-./install
+./install "$@"
 
 # Run the stow script
 ./stow
