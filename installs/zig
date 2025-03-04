@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+program="zig"
+
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  brew install --cask $program
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    #TODO: add snap install for some other pkg as well for ubuntu
+    #snap install zig --classic --beta
+    echo "Unsupported OS for $program."
+  else
+    echo "Unsupported OS for $program."
+  fi
+else
+  echo "Unsupported OS for $program."
+fi
