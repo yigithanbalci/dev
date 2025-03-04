@@ -4,18 +4,12 @@ program="bat"
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install $program
-<<<<<<< HEAD
   brew install "${program}-extras"
-=======
->>>>>>> 679cc88 (add installs for gtop, fish, go, node, bat, tldr, yarn, zed)
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     sudo apt install $program
-<<<<<<< HEAD
     sudo apt install "${program}-extras"
-=======
->>>>>>> 679cc88 (add installs for gtop, fish, go, node, bat, tldr, yarn, zed)
   else
     echo "Unsupported OS for $program."
   fi
