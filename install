@@ -12,11 +12,14 @@ export DEV_ENV="$DEV_ENV"
 
 grep=""
 dry_run="0"
+ignore="0" #NOTE: if ./install --ignore pkg => install everything except pkg
 
 while [[ $# -gt 0 ]]; do
   echo "ARG: \"$1\""
   if [[ "$1" == "--dry" ]]; then
     dry_run="1"
+  elif [[ "$1" == "--ignore" ]]; then
+    ignore="1"
   else
     grep+=" $1" # Append instead of overwrite
   fi
@@ -53,9 +56,14 @@ fi
 
 for s in $runs_dir; do
   # Skip scripts if they do not match the grep pattern
-  if [[ -n "$grep_pattern" ]] && ! echo "$s" | grep -Eq "$grep_pattern"; then
-    log "grep \"$grep_pattern\" filtered out $s"
-    continue
+  if [[ -n "$grep_pattern" ]]; then
+    if [[ "$ignore" == "0" ]] && ! echo "$s" | grep -Eq "$grep_pattern"; then
+      log "grep \"$grep_pattern\" filtered out $s"
+      continue
+    elif [[ "$ignore" == "1" ]] && echo "$s" | grep -Eq "$grep_pattern"; then
+      log "grep \"$grep_pattern\" ignored $s"
+      continue
+    fi
   fi
 
   log "running script: $s"
