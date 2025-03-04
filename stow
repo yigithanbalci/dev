@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-DIR="${DOTFILES_DIR:=dotfiles}"
-cd DIR
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+DOTFILES_DIR="${DOTFILES_DIR:=$SCRIPT_DIR/dotfiles}"
+cd $DOTFILES_DIR
 
-stow .
-stow bin --target=$HOME
-stow zsh --target=$HOME
+./stow
