@@ -4,10 +4,16 @@
 export DEV_ENV="$HOME/devenv"
 
 # Print the environment variable to verify
-echo "MY_ENV_VAR is set to: $MY_ENV_VAR"
+echo "DEV_ENV is set to: $DEV_ENV"
 
-# Run the first script
-./path/to/first_script.sh
+# Set the environment variable
+export DOTFILES_DIR="$DEV_ENV/dotfiles"
 
-# Run the second script
-./path/to/second_script.sh
+# Print the environment variable to verify
+echo "DOTFILES_DIR is set to: $DOTFILES_DIR"
+
+# Run the install script
+./install
+
+# Run the stow script
+./stow
