@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Set the environment variable
+export DEV_ENV="$HOME/devenv"
+
+# Print the environment variable to verify
+echo "MY_ENV_VAR is set to: $MY_ENV_VAR"
+
+# Run the first script
+./path/to/first_script.sh
+
+# Run the second script
+./path/to/second_script.sh
