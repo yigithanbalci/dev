@@ -13,6 +13,7 @@ I am too lazy to create this workflow now...
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Before executing install from fish, set DEV_ENV before `set -gx DEV_ENV (pwd)`
 
 For `install` or `run` scripts there is `grep` **filter**. So, you can use as `./run zsh make cmake` to install only intended ones.
@@ -43,3 +44,6 @@ TODO: create install scripts for: nerdfont, lazydocker, gtop, fish, go, typescri
 =======
 TODO: create install scripts for: gtop, fish, go, typescript, bat & batman, tdlr, node, yarn, zed & vscode (?), rust, zig (?).
 >>>>>>> 736d130 (add install for kitty, lazydocker, nerdfont)
+=======
+TODO: create install scripts for: vscode (?), zig (?).
+>>>>>>> 679cc88 (add installs for gtop, fish, go, node, bat, tldr, yarn, zed)
