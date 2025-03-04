@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+program="g++"
+
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  xcode-select --install
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    sudo apt install $program
+  else
+    echo "Unsupported OS for $program."
+  fi
+else
+  echo "Unsupported OS for $program."
+fi
