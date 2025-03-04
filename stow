@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+DIR="${DOTFILES_DIR:=dotfiles}"
+cd DIR
+
+stow .
+stow bin --target=$HOME
+stow zsh --target=$HOME
