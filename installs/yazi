@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+program="yazi"
+
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  #NOTE: You can install Yazi (and the optional dependencies):
+  # brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
+  brew install $program
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    #NOTE: dependencies
+    #apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+    # In Debian/Ubuntu, you currently need to manually build Yazi or download our official binary release.
+    echo "Unsupported OS for $program."
+  else
+    echo "Unsupported OS for $program."
+  fi
+else
+  echo "Unsupported OS for $program."
+fi
