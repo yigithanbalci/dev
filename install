@@ -42,6 +42,7 @@ else
   runs_dir=$(find $script_dir/installs -mindepth 1 -maxdepth 1 -executable)
 fi
 
+# TODO: add/modify filtering for preventing unnecessary installations especially for work
 for s in $runs_dir; do
   if echo "$s" | grep -vq "$grep"; then
     log "grep \"$grep\" filtered out $s"
