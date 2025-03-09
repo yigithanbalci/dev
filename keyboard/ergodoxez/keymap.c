@@ -18,7 +18,7 @@ enum tap_dance_codes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
-    KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           TG(1),                                          TG(2),          KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_EQUAL,
+    KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_LBRC,                                        KC_RBRC,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_EQUAL,
     KC_DELETE,      KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_P,           KC_Y,           TG(1),                                          TG(2),          KC_F,           KC_G,           KC_C,           KC_R,           KC_L,           KC_SLASH,
     KC_BSPC,        LT(2,KC_A),     KC_O,           KC_E,           KC_U,           KC_I,                                                                           KC_D,           KC_H,           KC_T,           KC_N,           LT(2,KC_S),     MT(MOD_LGUI, KC_MINUS),
     KC_LEFT_SHIFT,  MT(MOD_LCTL, KC_SCLN),KC_Q,           KC_J,           KC_K,           KC_X,           KC_HYPR,                                        KC_MEH,         KC_B,           KC_M,           KC_W,           KC_V,           MT(MOD_RCTL, KC_Z),KC_RIGHT_SHIFT,
