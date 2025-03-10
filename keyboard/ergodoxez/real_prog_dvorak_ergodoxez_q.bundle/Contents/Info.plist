@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>org.sil.ukelele.keyboardlayout.</string>
+	<string>org.sil.ukelele.keyboardlayout.real_prog_dvorak_ergodoxez_q</string>
 	<key>CFBundleName</key>
-	<string></string>
+	<string>real_prog_dvorak_ergodoxez_q</string>
 	<key>CFBundleVersion</key>
 	<string></string>
 	<key>KLInfo_real_prog_dvroak_ergodoxez_q</key>
@@ -15,7 +15,7 @@
 		<key>TISIconIsTemplate</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>org.sil.ukelele.keyboardlayout..real_prog_dvroak_ergodoxez_q</string>
+		<string>org.sil.ukelele.keyboardlayout.real_prog_dvorak_ergodoxez_q.real_prog_dvroak_ergodoxez_q</string>
 		<key>TISIntendedLanguage</key>
 		<string>en</string>
 	</dict>
