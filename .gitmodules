@@ -1,3 +1,6 @@
 [submodule "dotfiles"]
 	path = dotfiles
 	url = https://github.com/yigithanbalci/.dotfiles
+[submodule "keyboard/kinesis-adv-360-pro"]
+	path = keyboard/kinesis-adv-360-pro
+	url = https://github.com/yigithanbalci/Adv360-Pro-ZMK.git
