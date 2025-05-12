@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 program="tldr"
+mac_program="tlrc"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  $program = $mac_program
   brew install $program
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
