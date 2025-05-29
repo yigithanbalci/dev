@@ -7,3 +7,6 @@
 [submodule "wallpaper/anime-wallpaper"]
 	path = wallpaper/anime-wallpaper
 	url = https://github.com/yigithanbalci/anime-wallpaper.git
+[submodule "wallpaper/wallpapers"]
+	path = wallpaper/wallpapers
+	url = https://github.com/yigithanbalci/wallpapers.git
