@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+program="yabai"
+
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  brew install koekeishiya/formulae/yabai
+  brew install koekeishiya/formulae/skhd
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    echo "Unsupported OS for $program."
+  else
+    echo "Unsupported OS for $program."
+  fi
+else
+  echo "Unsupported OS for $program."
+fi
