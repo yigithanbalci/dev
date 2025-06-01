@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-program="yabai"
+program="wm"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
