@@ -11,6 +11,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     echo "Unsupported OS for $program."
   elif grep -q "Arch" /etc/os-release; then
     echo "Arch is prob installed with hyprland wm already"
+    sudo pacman -Syu --noconfirm waybar
+    sudo pacman -Syu --noconfirm hyprpaper
+    sudo pacman -Syu --noconfirm hyprlock
   else
     echo "Unsupported OS for $program."
   fi
