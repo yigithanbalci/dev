@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 program="gh"
 
-# Check the OS type to determine the correct find command
+# Check the OS type to determine the correct install command
 if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install $program
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -15,8 +15,11 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
       echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
       sudo apt update &&
       sudo apt install gh -y
+  # Check if it's Arch Linux
+  elif grep -q "Arch Linux" /etc/os-release; then
+    sudo pacman -S --noconfirm $program
   else
-    echo "Unsupported OS for $program."
+    echo "Unsupported Linux distribution for $program."
   fi
 else
   echo "Unsupported OS for $program."

@@ -8,8 +8,15 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     echo "Unsupported OS for $program."
+  # Check if it's Arch Linux or any Arch-based distro (e.g., Manjaro)
+  elif grep -q "Arch" /etc/os-release || grep -q "Manjaro" /etc/os-release; then
+    # Install Docker Compose from the Arch repository (if available)
+    sudo pacman -Syu --noconfirm docker-compose
+    # Alternatively, if you want to install the latest version using the official Docker Compose release:
+    # sudo curl -L "https://github.com/docker/compose/releases/download/v2.17.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    # sudo chmod +x /usr/local/bin/docker-compose
   else
-    echo "Unsupported OS for $program."
+    echo "Unsupported Linux distro for $program."
   fi
 else
   echo "Unsupported OS for $program."

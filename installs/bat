@@ -10,8 +10,12 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   if grep -q "Ubuntu" /etc/os-release; then
     sudo apt install $program
     sudo apt install "${program}-extras"
+  # Check if it's Arch Linux or any Arch-based distro (e.g., Manjaro)
+  elif grep -q "Arch" /etc/os-release || grep -q "Manjaro" /etc/os-release; then
+    sudo pacman -Syu --noconfirm $program
+    sudo pacman -Syu --noconfirm "${program}-extras"
   else
-    echo "Unsupported OS for $program."
+    echo "Unsupported Linux distro for $program."
   fi
 else
   echo "Unsupported OS for $program."
