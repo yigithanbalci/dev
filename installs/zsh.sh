@@ -11,6 +11,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     hash -r
     sudo chsh -s $(which $program)
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm $program
   else
     echo "Unsupported OS for $program."
   fi

@@ -9,6 +9,10 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     echo "Unsupported OS for $program."
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm ttf-jetbrains-mono-nerd
+    sudo pacman -Syu --noconfirm ttf-firacode-nerd
   else
     echo "Unsupported OS for $program."
   fi

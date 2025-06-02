@@ -22,21 +22,23 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     )
   # Check if it's Arch Linux
   elif grep -q "Arch Linux" /etc/os-release; then
-    sudo pacman -S --noconfirm llvm lld clang git
+    sudo pacman -Syu --noconfirm $program
 
-    # Install Zig from official Arch repo if available
-    if ! pacman -Qs zig > /dev/null; then
-      wget https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz -O /tmp/zig.tar.xz
-      tar -xvf /tmp/zig.tar.xz -C $HOME/.local
-    fi
-    export PATH="$HOME/.local/zig-linux-x86_64-0.13.0:$PATH"
+    #sudo pacman -S --noconfirm llvm lld clang git
 
-    git clone git@github.com:ghostty-org/ghostty.git $HOME/personal/ghostty
+    ## Install Zig from official Arch repo if available
+    #if ! pacman -Qs zig > /dev/null; then
+    #  wget https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz -O /tmp/zig.tar.xz
+    #  tar -xvf /tmp/zig.tar.xz -C $HOME/.local
+    #fi
+    #export PATH="$HOME/.local/zig-linux-x86_64-0.13.0:$PATH"
 
-    (
-      cd $HOME/personal/ghostty
-      zig build -p $HOME/.local -Doptimize=ReleaseFast
-    )
+    #git clone git@github.com:ghostty-org/ghostty.git $HOME/personal/ghostty
+
+    #(
+    #  cd $HOME/personal/ghostty
+    #  zig build -p $HOME/.local -Doptimize=ReleaseFast
+    #)
   else
     echo "Unsupported OS for $program."
   fi
