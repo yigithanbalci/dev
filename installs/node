@@ -9,6 +9,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     echo "Unsupported OS for $program."
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm "${program}js"
   else
     echo "Unsupported OS for $program."
   fi

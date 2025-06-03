@@ -45,6 +45,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     cd luarocks-3.11.1
     ./configure && make && sudo make install
     sudo luarocks install luacheck
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm $program
   else
     echo "Unsupported OS for $program."
   fi

@@ -7,9 +7,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
-    sudo apt install $program
+    sudo apt update
+    sudo apt install $program -y
+  # Check if it's Arch Linux or any Arch-based distro (e.g., Manjaro)
+  elif grep -q "Arch" /etc/os-release || grep -q "Manjaro" /etc/os-release; then
+    sudo pacman -Syu --noconfirm $program
   else
-    echo "Unsupported OS for $program."
+    echo "Unsupported Linux distro for $program."
   fi
 else
   echo "Unsupported OS for $program."

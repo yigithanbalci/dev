@@ -4,15 +4,22 @@ program="fish"
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install $program
-  #NOTE: below installs fisher package manager for fish.sh
+  # NOTE: below installs fisher package manager for fish
   brew install curl
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     echo "Unsupported OS for $program."
+  # Check if it's Arch Linux or any Arch-based distro (e.g., Manjaro)
+  elif grep -q "Arch" /etc/os-release || grep -q "Manjaro" /etc/os-release; then
+    # Install fish on Arch Linux using pacman
+    sudo pacman -Syu --noconfirm $program
+    # Install fisher package manager for fish
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish
+    fish -c 'fisher install jorgebucaran/fisher'
   else
-    echo "Unsupported OS for $program."
+    echo "Unsupported Linux distro for $program."
   fi
 else
   echo "Unsupported OS for $program."

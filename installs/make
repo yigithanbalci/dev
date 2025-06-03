@@ -9,6 +9,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   if grep -q "Ubuntu" /etc/os-release; then
     # sudo apt-get -y install make
     sudo apt install $program
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm $program
   else
     echo "Unsupported OS for $program."
   fi
