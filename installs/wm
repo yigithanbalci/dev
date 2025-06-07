@@ -3,9 +3,10 @@ program="wm"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  #TODO fix yabai and skhd to work as intended
+  #fix yabai and skhd to work as intended
   # brew install koekeishiya/formulae/yabai
   # brew install koekeishiya/formulae/skhd
+  brew install --cask nikitabobko/tap/aerospace
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
