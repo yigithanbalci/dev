@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
-program="kitty"
+program="wm"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  brew install --cask $program
+  #fix yabai and skhd to work as intended
+  # brew install koekeishiya/formulae/yabai
+  # brew install koekeishiya/formulae/skhd
+  brew install --cask nikitabobko/tap/aerospace
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     echo "Unsupported OS for $program."
   elif grep -q "Arch" /etc/os-release; then
-    echo "Installing $program on Arch Linux..."
-    sudo pacman -Syu --noconfirm $program
+    echo "Arch is prob installed with hyprland wm already"
+    sudo pacman -Syu --noconfirm waybar
+    sudo pacman -Syu --noconfirm hyprpaper
+    sudo pacman -Syu --noconfirm hyprlock
   else
     echo "Unsupported OS for $program."
   fi

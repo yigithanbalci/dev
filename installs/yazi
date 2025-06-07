@@ -13,6 +13,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     #apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
     # In Debian/Ubuntu, you currently need to manually build Yazi or download our official binary release.
     echo "Unsupported OS for $program."
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm $program
   else
     echo "Unsupported OS for $program."
   fi

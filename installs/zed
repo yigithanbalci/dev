@@ -8,6 +8,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     curl -f https://zed.dev/install.sh | sh
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Unsupported OS for $program."
   else
     echo "Unsupported OS for $program."
   fi

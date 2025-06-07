@@ -4,3 +4,9 @@
 [submodule "keyboard/kinesis-adv-360-pro"]
 	path = keyboard/kinesis-adv-360-pro
 	url = https://github.com/yigithanbalci/Adv360-Pro-ZMK.git
+[submodule "wallpaper/anime-wallpaper"]
+	path = wallpaper/anime-wallpaper
+	url = https://github.com/yigithanbalci/anime-wallpaper.git
+[submodule "wallpaper/wallpapers"]
+	path = wallpaper/wallpapers
+	url = https://github.com/yigithanbalci/wallpapers.git

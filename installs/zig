@@ -10,6 +10,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     #TODO: add snap install for some other pkg as well for ubuntu
     #snap install zig --classic --beta
     echo "Unsupported OS for $program."
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm $program
   else
     echo "Unsupported OS for $program."
   fi

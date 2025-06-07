@@ -4,6 +4,8 @@ program="neovim"
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install $program
+  # Clipboard support for Neovim on macOS
+  brew install pbcopy
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   # TODO: maybe change this to using a package manager?
@@ -29,6 +31,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     make -C ~/neovim CMAKE_BUILD_TYPE=RelWithDebInfo
     sudo make -C ~/neovim install
 
+    # Clipboard support for Neovim on Ubuntu
+    sudo apt -y install xclip xsel wl-clipboard
+
     git clone https://github.com/ThePrimeagen/harpoon.git $HOME/personal/harpoon
     cd $HOME/personal/harpoon
     git fetch
@@ -45,6 +50,12 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     cd luarocks-3.11.1
     ./configure && make && sudo make install
     sudo luarocks install luacheck
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm $program
+
+    # Clipboard support for Neovim on Arch with Hyprland (Wayland)
+    sudo pacman -S --noconfirm wl-clipboard xclip xsel
   else
     echo "Unsupported OS for $program."
   fi
