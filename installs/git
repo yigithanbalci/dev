@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# git is needed at the first place anyways
 gh="gh"
 glab="glab"
 
@@ -19,11 +20,11 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
       sudo apt install gh -y
   # Check if it's Arch Linux
   elif grep -q "Arch Linux" /etc/os-release; then
-    sudo pacman -S --noconfirm $gh
-    sudo pacman -S --noconfirm $glab
+    sudo pacman -Syu --noconfirm $gh
+    sudo pacman -Syu --noconfirm $glab
   else
-    echo "Unsupported Linux distribution for $gh."
+    echo "Unsupported Linux distribution for $gh and $glab."
   fi
 else
-  echo "Unsupported OS for $gh."
+  echo "Unsupported OS for $gh and $glab."
 fi

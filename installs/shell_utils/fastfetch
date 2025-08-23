@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-program="fastfetch"
+# https://www.passwordstore.org/
+program="pass"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then

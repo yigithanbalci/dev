@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# A better alternative to find
 program="fd"
 
 # Check the OS type to determine the correct find command

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Superios fuzzy finder
 program="fzf"
 
 # Check the OS type to determine the correct find command

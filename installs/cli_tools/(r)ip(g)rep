@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# what would I do if this did not exist?
-program="stow"
+# ripgrep can be used with command rg
+program="ripgrep"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -8,8 +8,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
-    echo "Unsupported OS for $program."
+    sudo apt install $program
   elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
     sudo pacman -Syu --noconfirm $program
   else
     echo "Unsupported OS for $program."

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# what would I do if this did not exist?
-program="stow"
+# A better cd alternative
+program="zoxide"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
