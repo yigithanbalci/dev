@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-program="wm"
+program="kubernetes"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  #fix yabai and skhd to work as intended
-  # brew install koekeishiya/formulae/yabai
-  # brew install koekeishiya/formulae/skhd
-  brew install --cask nikitabobko/tap/aerospace
+  brew install $program
+  brew install kubernetes-cli
+  brew install k9s
+  brew install --cask lens
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     echo "Unsupported OS for $program."
   elif grep -q "Arch" /etc/os-release; then
-    echo "Arch is prob installed with hyprland wm already"
-    sudo pacman -Syu --noconfirm waybar
-    sudo pacman -Syu --noconfirm hyprpaper
-    sudo pacman -Syu --noconfirm hyprlock
+    echo "Installing $program on Arch Linux..."
+    echo "Unsupported OS for $program."
+    #TODO: Add later
+    #yay -Syu --noconfirm $program
   else
     echo "Unsupported OS for $program."
   fi

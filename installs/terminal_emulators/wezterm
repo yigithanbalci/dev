@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-program="ripgrep"
+program="wezterm"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  brew install $program
+  brew install --cask $program
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
-    sudo apt install $program
+    echo "Unsupported OS for $program."
   elif grep -q "Arch" /etc/os-release; then
     echo "Installing $program on Arch Linux..."
     sudo pacman -Syu --noconfirm $program

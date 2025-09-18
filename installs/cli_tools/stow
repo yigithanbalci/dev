@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-program="fd"
+# what would I do if this did not exist?
+program="stow"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -7,13 +8,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
-    sudo apt update
-    sudo apt install "${program}-find" -y
-  # Check if it's Arch Linux or any Arch-based distro (e.g., Manjaro)
-  elif grep -q "Arch" /etc/os-release || grep -q "Manjaro" /etc/os-release; then
-    sudo pacman -Syu --noconfirm fd
+    echo "Unsupported OS for $program."
+  elif grep -q "Arch" /etc/os-release; then
+    sudo pacman -Syu --noconfirm $program
   else
-    echo "Unsupported Linux distro for $program."
+    echo "Unsupported OS for $program."
   fi
 else
   echo "Unsupported OS for $program."

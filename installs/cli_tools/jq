@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
-program="wm"
+# https://jqlang.org/
+program="jq"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  #fix yabai and skhd to work as intended
-  # brew install koekeishiya/formulae/yabai
-  # brew install koekeishiya/formulae/skhd
-  brew install --cask nikitabobko/tap/aerospace
+  brew install $program
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
     echo "Unsupported OS for $program."
   elif grep -q "Arch" /etc/os-release; then
-    echo "Arch is prob installed with hyprland wm already"
-    sudo pacman -Syu --noconfirm waybar
-    sudo pacman -Syu --noconfirm hyprpaper
-    sudo pacman -Syu --noconfirm hyprlock
+    sudo pacman -Syu --noconfirm $program
   else
     echo "Unsupported OS for $program."
   fi

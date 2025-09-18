@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
-program="gh"
+# git is needed at the first place anyways
+gh="gh"
+glab="glab"
 
 # Check the OS type to determine the correct install command
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  brew install $program
+  brew install $gh
+  brew install $glab
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
@@ -17,10 +20,11 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
       sudo apt install gh -y
   # Check if it's Arch Linux
   elif grep -q "Arch Linux" /etc/os-release; then
-    sudo pacman -S --noconfirm $program
+    sudo pacman -Syu --noconfirm $gh
+    sudo pacman -Syu --noconfirm $glab
   else
-    echo "Unsupported Linux distribution for $program."
+    echo "Unsupported Linux distribution for $gh and $glab."
   fi
 else
-  echo "Unsupported OS for $program."
+  echo "Unsupported OS for $gh and $glab."
 fi
