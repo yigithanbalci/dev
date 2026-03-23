@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Superios fuzzy finder tv
+program="television"
+
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  brew install television
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    curl -fsSL https://alexpasmantier.github.io/television/install.sh | bash
+  # Check if it's Arch Linux or any Arch-based distro (e.g., Manjaro)
+  elif grep -q "Arch" /etc/os-release || grep -q "Manjaro" /etc/os-release; then
+    sudo pacman -Syu --noconfirm television
+  else
+    echo "Unsupported Linux distro for $program."
+  fi
+else
+  echo "Unsupported OS for $program."
+fi

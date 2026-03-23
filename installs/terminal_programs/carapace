@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+program="carapace"
+
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  brew install $program
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    sudo apt install $program
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm $program
+  else
+    echo "Unsupported OS for $program."
+  fi
+else
+  echo "Unsupported OS."
+fi

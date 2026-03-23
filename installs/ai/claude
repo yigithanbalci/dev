@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+program="claude"
+
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  curl -fsSL https://claude.ai/install.sh | bash
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    curl -fsSL https://claude.ai/install.sh | bash
+  # Check if it's Arch Linux or any Arch-based distro (e.g., Manjaro)
+  elif grep -q "Arch" /etc/os-release || grep -q "Manjaro" /etc/os-release; then
+    echo "Unsupported Linux distro for $program."
+  else
+    echo "Unsupported Linux distro for $program."
+  fi
+else
+  echo "Unsupported OS for $program."
+fi
