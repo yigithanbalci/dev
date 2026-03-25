@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+program="gh-dash"
+
+#TODO: add gh installation check
+# Check the OS type to determine the correct find command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  gh extension install dlvhdr/gh-dash
+  brew install --cask font-fira-code-nerd-font
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux: Check if it's Ubuntu
+  if grep -q "Ubuntu" /etc/os-release; then
+    # TODO yigithanbalci 2026-03-25: add font installation
+    gh extension install dlvhdr/gh-dash
+  elif grep -q "Arch" /etc/os-release; then
+    echo "Installing $program on Arch Linux..."
+    sudo pacman -Syu --noconfirm $program
+  else
+    echo "Unsupported OS for $program."
+  fi
+else
+  echo "Unsupported OS for $program."
+fi
