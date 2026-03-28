@@ -5,7 +5,9 @@ program="yazi"
 if [[ "$OSTYPE" == "darwin"* ]]; then
   #NOTE: You can install Yazi (and the optional dependencies):
   # brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
-  brew install $program
+  brew install $program ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font
+  brew link ffmpeg-full imagemagick-full -f --overwrite
+  ya pkg add yazi-rs/flavors:catppuccin-mocha
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
