@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+program="nvm"
+
+# nvm official install script works on macOS, Ubuntu, Arch, and other Linux distros
+echo "Installing $program..."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
