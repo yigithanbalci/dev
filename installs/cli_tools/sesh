@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# A better cd alternative and z
-program="zoxide"
-program_old="z"
+program="sesh"
 
 # Check the OS type to determine the correct find command
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -9,11 +7,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux: Check if it's Ubuntu
   if grep -q "Ubuntu" /etc/os-release; then
-    echo "Unsupported OS for $program."
-  elif grep -q "Arch" /etc/os-release; then
-    sudo pacman -Syu --noconfirm $program
+    go install github.com/joshmedeski/sesh/v2@latest
+  elif grep -q "Arch" /etc/os-release || grep -q "Manjaro" /etc/os-release; then
+    yay -S sesh-bin
   else
-    echo "Unsupported OS for $program."
+    echo "Unsupported Linux distro for $program."
   fi
 else
   echo "Unsupported OS for $program."
