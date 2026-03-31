@@ -10,3 +10,6 @@
 [submodule "wallpaper/wallpapers"]
 	path = wallpaper/wallpapers
 	url = https://github.com/yigithanbalci/wallpapers.git
+[submodule "install"]
+	path = install
+	url = https://github.com/yigithanbalci/install.git
